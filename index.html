@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Administrace - Přihlášení</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-body">
+
+<div class="login-container">
+    <div id="loginSection">
+        <h2>Přihlášení do administrace</h2>
+        <form id="loginForm">
+            <input type="text" id="loginUsername" placeholder="Uživatelské jméno" required>
+            <input type="password" id="loginPassword" placeholder="Heslo" required>
+            <button type="submit">Přihlásit se</button>
+        </form>
+        <p>Nemáš účet? <a href="#" id="toRegister">Zaregistruj se</a></p>
+    </div>
+
+    <div id="registerSection" style="display: none;">
+        <h2>Registrace nového uživatele</h2>
+        <form id="registerForm">
+            <input type="text" id="regUsername" placeholder="Uživatelské jméno" required>
+            <input type="password" id="regPassword" placeholder="Heslo" required>
+            <button type="submit">Zaregistrovat se</button>
+        </form>
+        <p>Už máš účet? <a href="#" id="toLogin">Přihlas se</a></p>
+    </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Administrace - Blog</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Horní lišta -->
+<header class="admin-header">
+    <div class="header-container">
+        <h1>Admin Panel</h1>
+        <div class="user-info">
+            <span id="loggedUser">Přihlášen</span>
+            <button id="logoutBtn" class="btn-danger-sm">Odhlásit se</button>
+        </div>
+    </div>
+</header>
+
+<!-- Hlavní layout: vlevo menu, vpravo obsah -->
+<div class="admin-container">
+    <aside class="admin-sidebar">
+        <ul class="sidebar-menu">
+            <li><a href="#" class="nav-link active" data-target="dashboard">Přehled</a></li>
+            <li><a href="#" class="nav-link" data-target="posts">Správa příspěvků</a></li>
+            <li><a href="#" class="nav-link" data-target="pages">Správa stránek</a></li>
+            <li><a href="#" class="nav-link" data-target="categories">Rubriky a kategorie</a></li>
+            <li><a href="#" class="nav-link" data-target="settings">Nastavení</a></li>
+        </ul>
+    </aside>
+
+    <main class="admin-main">
+        <h2 id="pageTitle">Přehled</h2>
+        <div id="dynamicContent">
+            <!-- Sem se dynamicky načítá obsah -->
+        </div>
+    </main>
+</div>
+
+<!-- Skripty -->
+<script src="posts.js"></script>
+<script src="pages.js"></script>
+<script src="categories.js"></script>
+<script src="settings.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>
