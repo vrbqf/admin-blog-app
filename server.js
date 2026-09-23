@@ -6,7 +6,6 @@ const PORT = 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname)));
 
 // SSR trasa pro administraci
 app.get('/admin', (req, res) => {
@@ -14,22 +13,17 @@ app.get('/admin', (req, res) => {
 
     fs.readFile(filePath, 'utf8', (err, htmlContent) => {
         if (err) {
-            return res.status(500).send('Chyba při načítání stránky.');
+            return res.status(500).send('Chyba při načítání.');
         }
 
-        // Tady si server připraví data (můžeš si sem pak načítat třeba vlastní soubor s daty)
-        const posts = [
-            { title: "Ukázkový příspěvek ze serveru", date: "16.09.2026" }
-        ];
+        const serverDataHtml = '<p>Tohle přišlo ze serveru přes SSR!</p>';
 
-        // Vygenerujeme HTML kód pro tabulku
-        const tableRows = posts.map(p => `<tr><td>${p.title}</td><td>${p.date}</td></tr>`).join('');
+        // Tady nahrazujeme ten tvůj prázdný div
+        const finalHtml = htmlContent.replace(
+            '<div id="dynamicContent"></div>',
+            `<div id="dynamicContent">${serverDataHtml}</div>`
+        );
 
-        // Server "vlepí" data do HTML ještě před odesláním uživateli
-        // (V admin.html musíš mít připravené např. <tbody id="posts-table"></tbody>)
-        const finalHtml = htmlContent.replace('<tbody></tbody>', `<tbody>${tableRows}</tbody>`);
-
-        // Pošleme hotovou stránku (SSR)
         res.send(finalHtml);
     });
 });
