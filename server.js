@@ -4,6 +4,9 @@ const path = require('path');
 const app = express();
 const PORT = 3000;
 
+// TOTO TADY ZASE ZAPNEŠ, aby prohlížeč našel style.css a JS soubory
+app.use(express.static(path.join(__dirname)));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -18,7 +21,6 @@ app.get('/admin', (req, res) => {
 
         const serverDataHtml = '<p>Tohle přišlo ze serveru přes SSR!</p>';
 
-        // Tady nahrazujeme ten tvůj prázdný div
         const finalHtml = htmlContent.replace(
             '<div id="dynamicContent"></div>',
             `<div id="dynamicContent">${serverDataHtml}</div>`
