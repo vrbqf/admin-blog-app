@@ -291,3 +291,24 @@ button[type="submit"]:hover {
     text-align: center;
     font-size: 20px;
 }
+
+/* Styly pro toast notifikaci */
+#toastNotification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #28a745;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    font-weight: bold;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    pointer-events: none;
+}
+
+#toastNotification.show {
+    opacity: 1;
+}

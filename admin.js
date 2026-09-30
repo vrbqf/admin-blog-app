@@ -67,12 +67,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 break;
             // ... ostatní case zůstávají stejné
             case "posts":
-                pageTitle.textContent = "Správa příspěvków";
+                pageTitle.textContent = "Správa příspěvků";
                 dynamicContent.innerHTML = `
                     <div class="crud-container">
                         <h3>Přidat nový příspěvek</h3>
                         <form id="postForm">
                             <input type="text" id="postTitle" placeholder="Nadpis příspěvku" required>
+                            
+                            <!-- Zde jsme přidali výběr rubriky -->
+                            <div style="margin-bottom: 15px;">
+                                <label for="postCategory" style="display: block; margin-bottom: 5px; font-weight: bold; color: #495057;">Rubrika:</label>
+                                <select id="postCategory" class="form-control" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                                    <option value="">-- Vyberte rubriku --</option>
+                                </select>
+                            </div>
+
                             <textarea id="postContent" placeholder="Obsah příspěvku..." rows="4" required></textarea>
                             
                             <h4 style="margin-top: 15px; color: #495057;">SEO Optimalizace</h4>
@@ -156,5 +165,24 @@ function escapeHtml(text) {
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
+}
+
+// Funkce pro zobrazení hezké notifikace v rohu
+function showToast(message) {
+    // Zkontrolujeme, jestli prvek už v HTML existuje, jinak ho vytvoříme
+    let toast = document.getElementById("toastNotification");
+    if (!toast) {
+        toast = document.createElement("div");
+        toast.id = "toastNotification";
+        document.body.appendChild(toast);
+    }
+
+    toast.textContent = message;
+    toast.classList.add("show");
+
+    // Po 3 sekundách notifikace zase zmizí
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 3000);
 }
 
